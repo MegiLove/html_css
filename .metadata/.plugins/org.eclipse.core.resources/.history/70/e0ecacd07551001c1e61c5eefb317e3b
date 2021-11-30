@@ -1,0 +1,18 @@
+package com.sist.dao;
+
+import java.util.ArrayList;
+
+public class DeptDao {
+	public ArrayList<String> listDname(){
+		ArrayList<String> list= new ArrayList<String>();
+		String sql="select dname from dept";
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			
+		}
+		return list;
+	}
+}

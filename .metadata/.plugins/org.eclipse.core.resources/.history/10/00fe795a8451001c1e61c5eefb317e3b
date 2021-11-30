@@ -1,0 +1,44 @@
+<%@page import="com.sist.vo.GoodsVO"%>
+<%@page import="com.sist.dao.GoodsDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+	GoodsDAO dao= new GoodsDAO();
+	ArrayList<GoodsVO> list= dao.listGoods();
+	%>
+	
+	<h2>상품정보 목록</h2>
+	<hr>
+	<table border="1">
+		<tr>
+			<td>상품번호</td>
+			<td>상품명</td>
+			<td>가격</td>
+			<td>수량</td>
+			<td>이미지</td>	
+		</tr>
+		
+		<tr>
+		<%for(GoodsVO g:list){
+			%>
+			<td><%=g.getNo() %></td>
+			<td><%=g.getName() %></td>
+			<td><%=g.getPrice() %></td>
+			<td><%=g.getQty() %></td>
+			<td><%=g.getFname() %></td>
+			<%
+		} %>
+			
+				
+		</tr>
+	</table>
+</body>
+</html>

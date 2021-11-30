@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="boardTest.jsp" method="post">
+		게시물번호: <input type="number" name="number">
+		작성자이름: <input type="number" name="number">
+		게시물번호: <input type="number" name="number">
+		게시물번호: <input type="number" name="number">
+		게시물번호: <input type="number" name="number">
+		게시물번호: <input type="number" name="number">
+	</form>
+</body>
+</html>

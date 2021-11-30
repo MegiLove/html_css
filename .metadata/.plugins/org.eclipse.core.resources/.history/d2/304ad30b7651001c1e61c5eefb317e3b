@@ -1,0 +1,23 @@
+package com.sist.dao;
+
+import java.util.ArrayList;
+
+public class DeptDao {
+	public ArrayList<String> listDname(){
+		ArrayList<String> list= new ArrayList<String>();
+		String sql="select dname from dept";
+		String driver="oracle.jdbc.driver.OracleDriver";
+		String url="jdbc:oracle:thin:@localhost:1521:XE";
+		String user="c##madang";
+		String pwd="madang";
+		
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			
+		}
+		return list;
+	}
+}

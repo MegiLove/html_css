@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>상품목록</h2>
+	<img src="ball1.jpg">
+	<img src="ball2.jpg">
+	<img src="ball3.jpg">
+	<img src="ball4.jpg">
+	<img src="ball5.jpg">
+</body>
+</html>
