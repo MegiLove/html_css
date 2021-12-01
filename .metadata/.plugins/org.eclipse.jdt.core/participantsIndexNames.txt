@@ -1,3 +1,5 @@
 INDEX VERSION 1.131
 C:\html_css_20211130\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\833453857.index
 \day1130\src\main\java
+C:\html_css_\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\833453857.index
+\day1130\src\main\java
