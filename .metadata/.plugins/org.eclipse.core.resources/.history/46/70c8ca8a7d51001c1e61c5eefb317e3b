@@ -1,7 +1,0 @@
-create table goods(
-	no number primary key,
-	name varchar2(30),
-	price number,
-	qty number,
-	fname varchar2(50)
-);
