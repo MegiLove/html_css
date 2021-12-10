@@ -10,30 +10,10 @@ span {
 	cursor: pointer;
 }
 </style>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9941dea1d87d8f7fdabd6dbae45930d2"></script>
-
+	src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function() {
-
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			level : 3
-		// 지도의 확대 레벨
-		};
-
-		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-		var map = new kakao.maps.Map(mapContainer, mapOption);
 
 		var pageSize = 20;
 		var totalRecord; //전체 레코드수를 담기 위한 변수
@@ -41,11 +21,6 @@ span {
 		var arr; //전체 데이터를 담기 위한 배열
 
 		var pageGroup = 10; //한 화면에 보여줄 페이지의 수를 제한
-		
-		var oldMarker= new kakao.maps.Marker({	
-			position :  new kakao.maps.LatLng(33.450701, 126.570667)	
-		});
-			
 
 		$.getJSON("전국야영(캠핑)장표준데이터.json", function(data) {
 			arr = data['records'];
@@ -57,13 +32,13 @@ span {
 		}); //end getJSON
 
 		function printPage(page) {
-
+			
 			$("#list").empty();
+			
+			var start=(page - 1) * pageSize;
+			var end=start + pageSize - 1;
 
-			var start = (page - 1) * pageSize;
-			var end = start + pageSize - 1;
-
-			for (var i = start; i <= end; i++) {
+			for (var i =start; i<=end; i++) {
 				var row = arr[i];
 				var name = row['야영(캠핑)장명'];
 				var addr = row['소재지도로명주소'];
@@ -73,13 +48,13 @@ span {
 				var td2 = $("<td></td>").html(addr);
 				var td3 = $("<td></td>").html(lat);
 				var td4 = $("<td></td>").html(lng);
-				var tr = $("<tr></tr>").addClass("item");
-				$(tr).attr("index", i);
+				var tr = $("<tr></tr>");
 				$(tr).append(td1, td2, td3, td4);
 				$("#list").append(tr);
 			}
 		}
 
+		
 		function printPageNumber(page) {
 
 			//paging에 있는 모든 자식 노드(태그)들을 지워준다 
@@ -117,28 +92,12 @@ span {
 			printPage(page);
 		});
 
-		$(document).on("click", ".item", function() {
-			var index = $(this).attr("index");
-			var item = arr[index];
-			var lat = item['위도'];
-			var lng = item['경도'];
-			console.log(lat, lng);
-			var moveLatLon = new kakao.maps.LatLng(lat, lng);
-			map.panTo(moveLatLon); 
-			var marker = new kakao.maps.Marker({	
-				position : moveLatLon	
-			});		
-			oldMarker.setMap(null);
-			marker.setMap(map);
-			oldMarker=marker;
-		});
-
 	});
 </script>
 </head>
 <body>
 	<div id="paging"></div>
-	<table class="table table-hover">
+	<table>
 		<thead>
 			<tr>
 				<th>캠핑장이름</th>
@@ -150,6 +109,5 @@ span {
 		<tbody id="list">
 		</tbody>
 	</table>
-	<div id="map" style="width: 100%; height: 500px;"></div>
 </body>
 </html>
